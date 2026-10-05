@@ -1,0 +1,70 @@
+app/main.py
+→ FastAPI 앱 시작점
+
+routers/
+→ API URL 받는 곳
+→ Spring의 Controller 비슷
+
+services/
+→ 분석/비즈니스 로직
+→ Spring의 Service
+
+clients/
+→ 이터널리턴 외부 API 호출
+→ RestTemplate/WebClient 전담 계층 느낌
+
+core/
+→ 환경설정
+→ API_KEY, 공통 설정 관리
+
+
+
+
+
+1. config.py
+   → .env에서 API_KEY 읽기
+
+2. eternal_return_client.py
+   → 닉네임 → userId
+   → userId → 경기 목록 API 호출
+
+3. analysis_service.py
+   → 랭크 필터링
+   → 시즌 필터링
+   → pagination
+   → 50/100/max
+
+4. analysis.py
+   → URL 요청 받기
+
+5. main.py
+   → router 등록
+
+
+
+
+Spring 감각으로 보면
+
+main.py
+→ Application
+
+analysis.py
+→ Controller
+
+analysis_service.py
+→ Service
+
+eternal_return_client.py
+→ 외부 API 전용 Client
+
+config.py
+→ application.yml 역할 일부
+
+
+class Settings => 설정값들을 한 곳에 묶기 위한 클래스
+
+
+Python에서는 함수 이름 앞의 _를 보통:
+이 클래스 내부에서 사용하는 보조 함수입니다.
+
+라는 의미로 사용
